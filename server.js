@@ -1,17 +1,21 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const db = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'banner_db',
+  host: process.env.HOST,
+  port:process.env.PORT,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
+
 
 // Get the latest banner
 app.get('/api/banner', async (req, res) => {
