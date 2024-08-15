@@ -10,7 +10,7 @@ const Dashboard = ({ onUpdate }) => {
   useEffect(() => {
     const fetchBanner = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/banner');
+        const response = await axios.get('http://localhost:2033/api/banner');
         setDescription(response.data.description);
         setTimer(response.data.timer);
         setLink(response.data.link);
@@ -25,7 +25,7 @@ const Dashboard = ({ onUpdate }) => {
 
   const handleUpdate = async () => {
     try {
-      await axios.post('http://localhost:5000/api/banner', { description, timer, link });
+      await axios.post('http://localhost:2033/api/banner', { description, timer, link });
       if (onUpdate) {
         onUpdate({ description, timer, link, visible: bannerVisible });
       }
